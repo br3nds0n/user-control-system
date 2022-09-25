@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Usuario {
+public class Usuario extends AbstractModel{
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
