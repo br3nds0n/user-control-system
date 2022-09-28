@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Audited
 @NoArgsConstructor
 @AuditOverride(forClass = AbstractModel.class)
-public class Usuario extends AbstractModel{
+public class Usuario extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
