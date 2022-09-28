@@ -11,6 +11,7 @@ public class UsuarioDTO {
     private String usuario;
     private String senha;
 
+    private String cpf;
     private String cep;
     private String uf;
     private String bairro;
