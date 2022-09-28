@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UsuarioDTO {
+public class UsuarioDTO extends AbstractModelDTO{
 
     private String email;
     private String usuario;
