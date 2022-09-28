@@ -16,7 +16,7 @@ public class WebSecurityConfig {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v2/api-docs/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/cadastrar", "/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/cadastrar", "/login", "/cep").permitAll()
                 .anyRequest().authenticated()
                 .and().cors()
                 .and().exceptionHandling()
