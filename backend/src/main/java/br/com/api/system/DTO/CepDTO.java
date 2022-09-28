@@ -1,15 +1,13 @@
 package br.com.api.system.DTO;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UsuarioDTO {
-
-    private String email;
-    private String usuario;
-    private String senha;
+@NoArgsConstructor
+public class CepDTO {
 
     private String cep;
     private String uf;
