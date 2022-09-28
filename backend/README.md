@@ -11,7 +11,6 @@
     -   [starting](#-starting)
 -   [🛠 tecnologias](#-tecnologias)
 -   [✍🏼 autor](#-autor)
--   [📝 license](#-license)
 
 ## 📥 download
 
@@ -114,4 +113,4 @@ As seguintes ferramentas/tecnologias foram usadas na construção e teste do pro
 
 <br>
 
-[[ ↑ voltar ]](#-controle-usuario-backend-)
+[[ ↑ voltar ]](#-controle-de-usuário-backend-)
