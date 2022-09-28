@@ -44,4 +44,11 @@ public class UsuarioService {
 
         return this.repository.save(usuario);
     }
+
+    public Usuario buscarEmail(String email) {
+
+        Usuario usuario = this.repository.findByEmail(email);
+
+        return usuario;
+    }
 }
