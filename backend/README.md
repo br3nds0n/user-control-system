@@ -1,4 +1,4 @@
-# 📦 Controle de usuário BackEnd [<img align="right" src="https://img.shields.io/badge/release-v0.0.1-green">](user-control-system/releases)
+# 📦 Controle de usuário BackEnd [<img align="right" src="https://img.shields.io/badge/release-v0.0.1-green">](https://github.com/br3nds0n/user-control-system/releases)
 
 > <b>Status code:</b> 🚧 andamento 🚧
 
