@@ -22,7 +22,7 @@ public class ViaCepConsumer {
     private String url;
 
     public CepDTO consultarCep(String cep) {
-        ResponseEntity<CepDTO> response = restTemplate.exchange(url + cep +PREFIX_URL, HttpMethod.GET, obterHttpEntity(), CepDTO.class);
+        ResponseEntity<CepDTO> response = restTemplate.exchange(url + cep + PREFIX_URL, HttpMethod.GET, obterHttpEntity(), CepDTO.class);
 
         return (CepDTO) response.getBody();
     }

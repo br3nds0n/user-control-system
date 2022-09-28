@@ -25,6 +25,7 @@ public class Usuario extends AbstractModel{
     private String usuario;
     private String senha;
 
+    private String cpf;
     private String cep;
     private String uf;
     private String bairro;
