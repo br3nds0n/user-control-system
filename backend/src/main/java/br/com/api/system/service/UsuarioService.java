@@ -7,6 +7,7 @@ import br.com.api.system.model.Usuario;
 import br.com.api.system.repository.UsuarioRepository;
 import br.com.api.system.utils.CpfUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,15 +16,22 @@ import java.time.LocalDateTime;
 public class UsuarioService {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private UsuarioRepository repository;
 
     @Autowired
     private ViaCepConsumer viaCepConsumer;
 
     public Usuario criar(Usuario usuario) {
+
         if (!CpfUtil.isCPF(usuario.getCpf())) throw new BadRequestException("Cpf inválido");
 
         CepDTO response = this.viaCepConsumer.consultarCep(usuario.getCep());
+        String senhaHash = this.passwordEncoder.encode(usuario.getSenha());
+
+        usuario.setSenha(senhaHash);
 
         usuario.setUf(response.getUf());
         usuario.setBairro(response.getBairro());
