@@ -2,8 +2,9 @@
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router/router'
 import store from './store'
+
 import PrimeVue from 'primevue/config'
 import InputText from 'primevue/inputtext'
 import Card from 'primevue/card'
