@@ -47,8 +47,6 @@ public class UsuarioService {
 
     public Usuario buscarEmail(String email) {
 
-        Usuario usuario = this.repository.findByEmail(email);
-
-        return usuario;
+        return this.repository.findByEmail(email);
     }
 }
