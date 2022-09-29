@@ -1,14 +1,47 @@
 <template>
-    <div>
-    <div>
-      <h2>Login</h2>
-      <label for="email">E-mail:</label>
-      <input v-model="email" type="text" />
-      <label class="mt-3" for="password">Senha:</label>
-      <input v-model="senha" type="password" />
-      <button v-on:click="login">
-        Login
-      </button>
+  <div>
+    <div class="d-flex justify-content-center">
+      <Card style="width: 25em" class="mt-5">
+        <template #header>
+          <!-- <div class="flex justify-content-center mt-4">
+            <img alt="logo" src="" style="width: 10em" />
+          </div> -->
+        </template>
+        <template #content>
+          <div class="text-center">
+            <h4>LOGIN</h4>
+          </div>
+          <div class="formgrid grid p-fluid">
+            <div class="field col-12 mt-2">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-envelope"></i>
+                </span>
+                <InputText v-model="email" placeholder="E-mail" />
+              </div>
+            </div>
+            <div class="field col-12 mt-2">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                  <i class="pi pi-key"></i>
+                </span>
+                <InputText v-model="senha" type="password" placeholder="Senha" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 d-inline-flex flex-column justify-content-center mt-2">
+            <Button
+              label="Entrar"
+              icon="pi pi-check"
+              v-on:click="login"
+              class="btnLogin"
+            />
+            <div class="mt-4 text-center">
+              <strong> Já possui conta ? <router-link to="/cadastrar">Cadastrar</router-link></strong>
+            </div>
+          </div>
+        </template>
+      </Card>
     </div>
   </div>
 </template>
@@ -30,7 +63,7 @@ export default {
         senha: this.senha
       }
 
-      service.login(credenciais).then(res => {
+      service.login(credenciais).then((res) => {
         if (res.data.token != null) {
           localStorage.setItem('token', res.data.token)
           this.$router.push('/')
@@ -41,6 +74,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
