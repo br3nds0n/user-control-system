@@ -1,8 +1,6 @@
 <template>
-  <nav>
-    <router-link to="/"></router-link>
-  </nav>
-  <router-view/>
+  <loading-componet v-if="$store.getters.isLoading"></loading-componet>
+  <router-view></router-view>
 </template>
 
 <style>
