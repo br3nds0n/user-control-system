@@ -63,11 +63,13 @@ export default {
         senha: this.senha
       }
 
+      this.$store.dispatch('addRequest')
       service.login(credenciais).then((res) => {
         if (res.data.token != null) {
           localStorage.setItem('token', res.data.token)
           this.$router.push('/')
         }
+        this.$store.dispatch('removeRequest')
       })
     }
   }
