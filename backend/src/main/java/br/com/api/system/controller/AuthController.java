@@ -1,10 +1,13 @@
 package br.com.api.system.controller;
 
 import br.com.api.system.DTO.UsuarioDTO;
+import br.com.api.system.exception.BadRequestException;
+import br.com.api.system.model.Usuario;
 import br.com.api.system.security.JwtRequest;
 import br.com.api.system.security.JwtResponse;
 import br.com.api.system.security.JwtTokenUtil;
 import br.com.api.system.security.JwtUserDetailsService;
+import br.com.api.system.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,18 +35,21 @@ public class AuthController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    private void autenticacao(String usuario, String senha) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuario, senha));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    private void autenticacao(String email, String senha) throws BadRequestException {
+        Usuario usuario = this.usuarioService.buscarEmail(email);
+
+        if (usuario == null) throw new BadRequestException("e-mail inválido");
+        if (!passwordEncoder.matches(senha, usuario.getSenha())) throw new BadRequestException("senha inválida");
     }
 
     @PostMapping
-    public ResponseEntity<?> criarAutenticacaoToken(@RequestBody JwtRequest response) throws Exception {
+    public ResponseEntity<?> criarAutenticacaoToken(@RequestBody JwtRequest response) {
         this.autenticacao(response.getEmail(), response.getSenha());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(response.getEmail());
 
