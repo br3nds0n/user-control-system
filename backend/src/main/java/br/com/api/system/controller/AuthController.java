@@ -41,8 +41,12 @@ public class AuthController {
     @Autowired
     private UsuarioService usuarioService;
 
+    public Usuario usuarioUtil(String email) {
+        return this.usuarioService.buscarEmail(email);
+    }
+
     private void autenticacao(String email, String senha) throws BadRequestException {
-        Usuario usuario = this.usuarioService.buscarEmail(email);
+        Usuario usuario = this.usuarioUtil(email);
 
         if (usuario == null) throw new BadRequestException("e-mail inválido");
         if (!passwordEncoder.matches(senha, usuario.getSenha())) throw new BadRequestException("senha inválida");
@@ -50,10 +54,15 @@ public class AuthController {
 
     @PostMapping
     public ResponseEntity<?> criarAutenticacaoToken(@RequestBody JwtRequest response) {
-        this.autenticacao(response.getEmail(), response.getSenha());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(response.getEmail());
+        Usuario usuario = this.usuarioUtil(response.getEmail());
 
+        this.autenticacao(response.getEmail(), response.getSenha());
+
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(response.getEmail());
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return new ResponseEntity<>(new JwtResponse(token), HttpStatus.CREATED);
+
+        JwtResponse jwtResponse = new JwtResponse(token, usuario.getId(), usuario.getUsuario());
+
+        return new ResponseEntity<>(jwtResponse, HttpStatus.CREATED);
     }
 }
