@@ -28,7 +28,6 @@ export default {}
   right: 0;
 }
 
-/* Transparent Overlay */
 .loadingfullwrapper:before {
   content: '';
   display: block;
@@ -55,7 +54,6 @@ export default {}
 }
 
 .spinnerCollor {
-  /* color: #0099ff; */
-  color: #0772b3;
+  color: #2870db;
 }
 </style>
