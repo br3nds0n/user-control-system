@@ -13,6 +13,7 @@ import Message from 'primevue/message'
 import TabMenu from 'primevue/tabmenu'
 import ToastService from 'primevue/toastservice'
 import Toast from 'primevue/toast'
+import Password from 'primevue/password'
 
 import LoadingComponet from './components/LoadingComponent.vue'
 
@@ -35,10 +36,12 @@ app.component('Button', Button)
 app.component('Message', Message)
 app.component('TabMenu', TabMenu)
 app.component('Toast', Toast)
+app.component('Password', Password)
 
 // components app
 app.component('LoadingComponet', LoadingComponet)
 
+// components awesome
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('font-awesome-layers', FontAwesomeLayers)
 app.component('font-awesome-layers-text', FontAwesomeLayersText)
