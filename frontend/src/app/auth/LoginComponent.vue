@@ -39,7 +39,7 @@
               class="btnLogin"
             />
             <div class="mt-4 text-center">
-              <strong> Já possui conta ? <router-link to="/cadastrar">Cadastrar</router-link></strong>
+              <strong> Não possui conta ? <router-link to="/cadastrar">Cadastrar</router-link></strong>
             </div>
           </div>
         </template>
