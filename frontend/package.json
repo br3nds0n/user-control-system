@@ -12,6 +12,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/vue-fontawesome": "^3.0.0-2",
+    "@vuelidate/core": "^2.0.0-alpha.9",
+    "@vuelidate/validators": "^2.0.0-alpha.7",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "primevue": "^3.17.0",
