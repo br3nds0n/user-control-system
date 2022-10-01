@@ -1,6 +1,5 @@
 package br.com.api.system.controller;
 
-import br.com.api.system.DTO.UsuarioDTO;
 import br.com.api.system.exception.BadRequestException;
 import br.com.api.system.model.Usuario;
 import br.com.api.system.security.JwtRequest;
@@ -12,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,7 +49,7 @@ public class AuthController {
     }
 
     @PostMapping
-    public ResponseEntity<?> criarAutenticacaoToken(@RequestBody JwtRequest response) {
+    public ResponseEntity<JwtResponse> criarAutenticacaoToken(@RequestBody JwtRequest response) {
         Usuario usuario = this.usuarioUtil(response.getEmail());
 
         this.autenticacao(response.getEmail(), response.getSenha());
