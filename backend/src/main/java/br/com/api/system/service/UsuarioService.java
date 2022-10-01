@@ -27,10 +27,12 @@ public class UsuarioService {
     public Usuario criar(Usuario usuario) {
 
         if (!CpfUtil.isCPF(usuario.getCpf())) throw new BadRequestException("Cpf inválido");
+        if (repository.findByEmail(usuario.getEmail()) != null) throw new BadRequestException("E-mail já cadastrado");
+        if (repository.findByUsuario(usuario.getUsuario()) != null) throw new BadRequestException("Usuário já cadastrado");
 
         CepDTO response = this.viaCepConsumer.consultarCep(usuario.getCep());
         String senhaHash = this.passwordEncoder.encode(usuario.getSenha());
-
+        
         usuario.setSenha(senhaHash);
 
         usuario.setUf(response.getUf());
