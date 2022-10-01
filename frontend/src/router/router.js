@@ -1,11 +1,14 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { trackRouter } from 'vue-gtag-next'
+import appRotas from '@/app/router'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/app/home/HomeView.vue')
+    redirect: { name: 'DashBoard' },
+    component: () => import('@/App.vue'),
+    children: [...appRotas]
   },
   {
     path: '/login',
