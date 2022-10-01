@@ -1,9 +1,9 @@
 /* eslint-disable vue/multi-word-component-names */
 
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router/router'
-import store from './store'
+import App from '@/App.vue'
+import router from '@/router/router'
+import store from '@/store'
 
 import PrimeVue from 'primevue/config'
 import InputText from 'primevue/inputtext'
@@ -14,8 +14,9 @@ import TabMenu from 'primevue/tabmenu'
 import ToastService from 'primevue/toastservice'
 import Toast from 'primevue/toast'
 import Password from 'primevue/password'
+import Menubar from 'primevue/menubar'
 
-import LoadingComponet from './components/LoadingComponent.vue'
+import LoadingComponet from '@/components/LoadingComponent.vue'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -37,6 +38,7 @@ app.component('Message', Message)
 app.component('TabMenu', TabMenu)
 app.component('Toast', Toast)
 app.component('Password', Password)
+app.component('Menubar', Menubar)
 
 // components app
 app.component('LoadingComponet', LoadingComponet)

@@ -177,11 +177,11 @@ export default {
 
           this.$store.dispatch('removeRequest')
         })
-        .catch((e) => {
+        .catch((erro) => {
           this.$toast.add({
             severity: 'error',
             summary: 'Error',
-            detail: `${e.response.data.descricao}`,
+            detail: `${erro.response.data.descricao}`,
             life: 3000
           })
           this.$store.dispatch('removeRequest')
